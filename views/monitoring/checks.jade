@@ -18,13 +18,13 @@ block content
         tbody
           each check in checks
             tr
-              td #{check.name}
-              td #{check.interval}
+              td #{app.locals.checkDef(app.locals.checkDef(check.name))}
+              td #{app.locals.checkDef(app.locals.checkDef(check.interval))}
               td
                 ul.list-unstyled
                   each subscriber in check.subscribers
                     li= subscriber
-              td.visible-lg #{check.command}
+              td.visible-lg #{app.locals.checkDef(app.locals.checkDef(check.command))}
 block footer
   script(src='/javascripts/bootstrap-sortable.js')
   script(src='/javascripts/moment.min.js')

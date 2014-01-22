@@ -295,6 +295,14 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 })
 
+app.locals.checkDef = function(variable) {
+  try {
+    (typeof(variable) === 'undefined') ? return '' : return variable
+  } catch(err) {
+      logger.log('error', err.message)
+      return ''
+  }
+}
 
 app.locals.ensureAuthenticated = function (req, res, next) {
   if (req.isAuthenticated()) {

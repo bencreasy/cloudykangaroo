@@ -17,15 +17,15 @@ block content
         tbody
 //          each event,i in events
 //            if event.status > 0
-//              tr(class="#{getEventClass(event.status)}", id="row-#{i}")
-//                td(data-value="#{event.issued}") #{getFormattedTimestamp(event.issued)}
-//                td #{event.client}
-//                  button(onclick="silenceChecks('#{event.client}', false);").btn.btn-default.btn-xs.pull-left
+//              tr(class="#{app.locals.checkDef(app.locals.checkDef(getEventClass(event.status)))}", id="row-#{app.locals.checkDef(app.locals.checkDef(i))}")
+//                td(data-value="#{app.locals.checkDef(app.locals.checkDef(event.issued))}") #{app.locals.checkDef(app.locals.checkDef(getFormattedTimestamp(event.issued)))}
+//                td #{app.locals.checkDef(app.locals.checkDef(event.client))}
+//                  button(onclick="silenceChecks('#{app.locals.checkDef(app.locals.checkDef(event.client))}', false);").btn.btn-default.btn-xs.pull-left
 //                    span.glyphicon.glyphicon-volume-off
-//                td #{event.check}
-//                  button(onclick="silenceChecks('#{event.client}', '#{event.check}');").btn.btn-default.btn-xs.pull-left
+//                td #{app.locals.checkDef(app.locals.checkDef(event.check))}
+//                  button(onclick="silenceChecks('#{app.locals.checkDef(app.locals.checkDef(event.client))}', '#{app.locals.checkDef(app.locals.checkDef(event.check))}');").btn.btn-default.btn-xs.pull-left
 //                    span.glyphicon.glyphicon-volume-off
-//                td.visible-lg #{event.output.slice(0,65)}
+//                td.visible-lg #{app.locals.checkDef(app.locals.checkDef(event.output.slice(0,65)))}
 block footer
   script(src='/javascripts/jquery.dataTables.min.js')
   script(src='/javascripts/dataTables.bootstrap.js')

@@ -10,13 +10,13 @@ block content
         each group,group_id in device_types
           if group_id != 0
             li
-              a(href="#groupid_#{group.devtype_group_id}", data-toggle="tab") #{group.name}
+              a(href="#groupid_#{app.locals.checkDef(group.devtype_group_id)}", data-toggle="tab") #{app.locals.checkDef(group.name)}
 
       .tab-content
         each group,group_id in device_types
           if group_id != 0
-            .tab-pane(id="groupid_#{group.devtype_group_id}").active
-                table(id="tableid_#{group.devtype_group_id}").table.table-condensed.table-striped
+            .tab-pane(id="groupid_#{app.locals.checkDef(group.devtype_group_id)}").active
+                table(id="tableid_#{app.locals.checkDef(group.devtype_group_id)}").table.table-condensed.table-striped
                   thead
                     tr
                       th ID
@@ -30,18 +30,18 @@ block content
 #                      if device.devtype_group_id == group.devtype_group_id
 #                        tr
 #                          td
-#                            a(href="/ubersmith/devices/#{device.dev}") #{device.dev}
-#                          td #{device.type}
-#                          td #{device.dev_desc}
-#                          td #{device.company}
-#                          td #{device.location}
-#                          td #{device.device_status}
+#                            a(href="/ubersmith/devices/#{app.locals.checkDef(device.dev)}") #{app.locals.checkDef(device.dev)}
+#                          td #{app.locals.checkDef(device.type)}
+#                          td #{app.locals.checkDef(device.dev_desc)}
+#                          td #{app.locals.checkDef(device.company)}
+#                          td #{app.locals.checkDef(device.location)}
+#                          td #{app.locals.checkDef(device.device_status)}
 #                            br
-#                            span.label.label-primary #{device.total}
-#                            span.label.label-danger #{device.down}
-#                            span.label.label-warning #{device.warn}
-#                            span.label.label-success #{device.up}
-#                            span.label.label-default #{device.disabled}
+#                            span.label.label-primary #{app.locals.checkDef(device.total)}
+#                            span.label.label-danger #{app.locals.checkDef(device.down)}
+#                            span.label.label-warning #{app.locals.checkDef(device.warn)}
+#                            span.label.label-success #{app.locals.checkDef(device.up)}
+#                            span.label.label-default #{app.locals.checkDef(device.disabled)}
 
 block footer
   script(src='/javascripts/jquery.dataTables.min.js')
@@ -49,7 +49,7 @@ block footer
   each group,group_id in device_types
     if group_id != 0
         script(type='text/javascript').
-          $('#groupid_#{group.devtype_group_id} a').click(function (e) {
+          $('#groupid_#{app.locals.checkDef(group.devtype_group_id)} a').click(function (e) {
             if($(this).parent('li').hasClass('active')){
               $( $(this).attr('href') ).hide();
             }
@@ -59,10 +59,10 @@ block footer
 
         script(type='text/javascript').
           $(document).ready(function() {
-            $('#tableid_#{group.devtype_group_id}').dataTable( {
+            $('#tableid_#{app.locals.checkDef(group.devtype_group_id)}').dataTable( {
               "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
               "sPaginationType": "bootstrap",
-              "sAjaxSource": '/ubersmith/devices/list/#{group.devtype_group_id}',
+              "sAjaxSource": '/ubersmith/devices/list/#{app.locals.checkDef(group.devtype_group_id)}',
               "iDisplayLength": 10,
               "bSortClasses": false,
               "aoColumns": [

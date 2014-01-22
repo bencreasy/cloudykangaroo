@@ -21,43 +21,43 @@ block content
                     th(data-defaultsort='disabled').visible-lg Output
                 tbody
                   each event in sensuEvents
-                    tr(class="#{getEventClass(event.status)}")
-                      td #{getEventClass(event.status)}
-                      td #{event.check}
-                      td #{getFormattedTimestamp(event.issued)}
-                      td #{event.flapping}
-                      td #{event.occurrences}
-                      td.visible-lg #{event.output.slice(0,65)}
+                    tr(class="#{app.locals.checkDef(getEventClass(event.status))}")
+                      td #{app.locals.checkDef(getEventClass(event.status))}
+                      td #{app.locals.checkDef(event.check)}
+                      td #{app.locals.checkDef(getFormattedTimestamp(event.issued))}
+                      td #{app.locals.checkDef(event.flapping)}
+                      td #{app.locals.checkDef(event.occurrences)}
+                      td.visible-lg #{app.locals.checkDef(event.output.slice(0,65))}
         .row
           .col-md-6
             .panel.panel-default
               .panel-heading Sensu Information
               .panel-body
                 p IP Address
-                  span.pull-right #{sensuClient.address}
+                  span.pull-right #{app.locals.checkDef(sensuClient.address)}
                 p Name
-                  span.pull-right #{sensuClient.name}
+                  span.pull-right #{app.locals.checkDef(sensuClient.name)}
                 p Subscriptions
                    ul.list-group
                     each subscription in sensuClient.subscriptions
-                      li.list-group-item #{subscription}
+                      li.list-group-item #{app.locals.checkDef(subscription)}
           .col-md-6
             .panel.panel-default
               .panel-heading Ubersmith Information
               .panel-body
                 p Type:
-                  span.pull-right #{uberDevice.devtype_group}/#{uberDevice.type}   
+                  span.pull-right #{app.locals.checkDef(uberDevice.devtype_group}/#{uberDevice.type)}
                 p Active:
-                  span.label.label-success.pull-right #{uberDevice.active}
+                  span.label.label-success.pull-right #{app.locals.checkDef(uberDevice.active)}
                 p Location:
-                  span.label.label-success.pull-right #{uberDevice.location}
+                  span.label.label-success.pull-right #{app.locals.checkDef(uberDevice.location)}
                 p Company:
-                  span.pull-right #{uberDevice.company}   
+                  span.pull-right #{app.locals.checkDef(uberDevice.company)}
                 p Contact Information:
                   ul.list-group
                     li.list-group-item Email:
-                      span.pull-right #{uberDevice.email}   
+                      span.pull-right #{app.locals.checkDef(uberDevice.email)}
                     li.list-group-item Phone:
-                      span.pull-right #{uberDevice.phone}   
+                      span.pull-right #{app.locals.checkDef(uberDevice.phone)}
 
 block footer

@@ -5,14 +5,14 @@ block head
 block content
     .page-header
       h1 Device Detail
-      h4 #{uberDevice.dev_desc}.contegix.mgmt
+      h4 #{app.locals.checkDef(uberDevice.dev_desc)}.contegix.mgmt
     .container
       .row
         .col-md-14
           .panel.panel-default
             .panel-heading
               p Monitoring Events
-                span.label.label-default.pull-right #{sensuClient.name} / #{sensuClient.address}
+                span.label.label-default.pull-right #{app.locals.checkDef(sensuClient.name)} / #{app.locals.checkDef(sensuClient.address)}
             .panel-body
               table.table.table-condensed
                 thead
@@ -25,53 +25,53 @@ block content
                     th(data-defaultsort='disabled').visible-lg Output
                 tbody
                   each event in sensuEvents
-                    tr(class="#{getEventClass(event.status)}")
-                      td #{getEventClass(event.status)}
-                      td #{event.check}
-                      td #{getFormattedTimestamp(event.issued)}
-                      td #{event.flapping}
-                      td #{event.occurrences}
-                      td.visible-lg #{event.output.slice(0,65)}
+                    tr(class="#{app.locals.checkDef(getEventClass(event.status))}")
+                      td #{app.locals.checkDef(getEventClass(event.status))}
+                      td #{app.locals.checkDef(event.check)}
+                      td #{app.locals.checkDef(getFormattedTimestamp(event.issued))}
+                      td #{app.locals.checkDef(event.flapping)}
+                      td #{app.locals.checkDef(event.occurrences)}
+                      td.visible-lg #{app.locals.checkDef(event.output.slice(0,65))}
       .row
         .col-md-6
           .panel.panel-default
             .panel-heading System Stats
             .panel-body
               p Operating System
-                span.pull-right #{puppetInfo.facts.operatingsystem} #{puppetInfo.facts.operatingsystemrelease}
+                span.pull-right #{app.locals.checkDef(puppetInfo.facts.operatingsystem)} #{app.locals.checkDef(puppetInfo.facts.operatingsystemrelease)}
               p Kernel
-                span.pull-right #{puppetInfo.facts.kernel} #{puppetInfo.facts.kernelrelease}
+                span.pull-right #{app.locals.checkDef(puppetInfo.facts.kernel)} #{app.locals.checkDef(puppetInfo.facts.kernelrelease)}
               p Uptime
-                span.pull-right #{puppetInfo.facts.uptime}
+                span.pull-right #{app.locals.checkDef(puppetInfo.facts.uptime)}
               p Manufacturer Information
-                span.pull-right #{puppetInfo.facts.manufacturer} #{puppetInfo.facts.productname} Serial (#{puppetInfo.facts.serialnumber})
+                span.pull-right #{app.locals.checkDef(puppetInfo.facts.manufacturer)} #{app.locals.checkDef(puppetInfo.facts.productname)} Serial (#{app.locals.checkDef(puppetInfo.facts.serialnumber)})
               p Interfaces
-                span.pull-right Management: #{puppetInfo.facts.interface_mgmt} Public: #{puppetInfo.facts.interface_public}
+                span.pull-right Management: #{app.locals.checkDef(puppetInfo.facts.interface_mgmt)} Public: #{app.locals.checkDef(puppetInfo.facts.interface_public)}
               p Catalog Timestamp
-                span.pull-right #{getFormattedISO8601(puppetInfo.catalog_timestamp)}
+                span.pull-right #{app.locals.checkDef(getFormattedISO8601(puppetInfo.catalog_timestamp))}
               p Facts Timestamp
-                span.pull-right #{getFormattedISO8601(puppetInfo.facts_timestamp)}
+                span.pull-right #{app.locals.checkDef(getFormattedISO8601(puppetInfo.facts_timestamp))}
               p Report Timestamp
-                span.pull-right #{getFormattedISO8601(puppetInfo.report_timestamp)}
+                span.pull-right #{app.locals.checkDef(getFormattedISO8601(puppetInfo.report_timestamp))}
         .col-md-6
           .panel.panel-default
             .panel-heading Ubersmith Information
             .panel-body
               p Type:
-                span.pull-right #{uberDevice.devtype_group}/#{uberDevice.type}
+                span.pull-right #{app.locals.checkDef(uberDevice.devtype_group}/#{uberDevice.type)}
               p Active:
-                span.label.label-success.pull-right #{uberDevice.active}
+                span.label.label-success.pull-right #{app.locals.checkDef(uberDevice.active)}
               p Location:
-                span.pull-right #{uberDevice.location}
+                span.pull-right #{app.locals.checkDef(uberDevice.location)}
               p Company:
                 span.pull-right
-                  a(href="/ubersmith/clients/clientid/#{uberDevice.clientid}") #{uberDevice.company}
+                  a(href="/ubersmith/clients/clientid/#{app.locals.checkDef(uberDevice.clientid)}") #{app.locals.checkDef(uberDevice.company)}
               p Contact Information:
                 ul.list-group
                   li.list-group-item Email:
-                    span.pull-right #{uberDevice.email}
+                    span.pull-right #{app.locals.checkDef(uberDevice.email)}
                   li.list-group-item Phone:
-                    span.pull-right #{uberDevice.phone}
+                    span.pull-right #{app.locals.checkDef(uberDevice.phone)}
       .row
         .col-md-14
           .panel.panel-default
@@ -92,7 +92,7 @@ block footer
       $('#table_facts').dataTable( {
         "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
         "sPaginationType": "bootstrap",
-        "sAjaxSource": '/puppet/nodes/#{uberDevice.dev_desc}.contegix.mgmt/facts',
+        "sAjaxSource": '/puppet/nodes/#{app.locals.checkDef(uberDevice.dev_desc)}.contegix.mgmt/facts',
         "iDisplayLength": 10,
         "bSortClasses": false,
         "aoColumns": [

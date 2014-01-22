@@ -5,10 +5,10 @@ block content
   #container
     #message
       if message
-          p.text-error #{message}
+          p.text-error #{app.locals.checkDef(app.locals.checkDef(message))}
       form(action='/account/login',method='post').form-signin
           h2.form-signin.heading Please sign in
-          input(type="hidden", name='_csrf', value="#{token}")
+          input(type="hidden", name='_csrf', value="#{app.locals.checkDef(app.locals.checkDef(token))}")
           .username
               label Username
               input(type='text', name='username').form-control

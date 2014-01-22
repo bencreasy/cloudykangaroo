@@ -4,7 +4,7 @@ block head
 block content
   .page-header
     h1 Customer Detail
-    h4 #{client.company}
+    h4 #{app.locals.checkDef(client.company)}
   .container
     .row
       .col-md-14
@@ -22,12 +22,12 @@ block content
               tbody
                 each device in devices
                   tr
-                    td #{device.type}
+                    td #{app.locals.checkDef(device.type)}
                     td
-                      a(href="/ubersmith/devices/hostname/#{device.dev_desc}.contegix.mgmt") #{device.dev_desc}
-                    td #{device.label}
-                    td #{device.status}
-                    td #{device.location}
+                      a(href="/ubersmith/devices/hostname/#{app.locals.checkDef(device.dev_desc)}.contegix.mgmt") #{app.locals.checkDef(device.dev_desc)}
+                    td #{app.locals.checkDef(device.label)}
+                    td #{app.locals.checkDef(device.status)}
+                    td #{app.locals.checkDef(device.location)}
       .row
         .col-md-12
           .panel.panel-default
@@ -60,40 +60,40 @@ block content
                       td
                         ul.list-group
                           li.list-group-item Name:
-                            span.pull-right #{contact.real_name}
+                            span.pull-right #{app.locals.checkDef(contact.real_name)}
                           li.list-group-item Email:
-                            span.pull-right  #{contact.email}
+                            span.pull-right  #{app.locals.checkDef(contact.email)}
                           li.list-group-item Phone:
-                            span.pull-right  #{contact.phone}
+                            span.pull-right  #{app.locals.checkDef(contact.phone)}
                       td
                         ul.list-group
                           li.list-group-item Sales Role:
-                            span.pull-right #{contact.sales_role}
+                            span.pull-right #{app.locals.checkDef(contact.sales_role)}
                           li.list-group-item Billing Role:
-                            span.pull-right  #{contact.billing_role}
+                            span.pull-right  #{app.locals.checkDef(contact.billing_role)}
                           li.list-group-item DC Access Role:
-                            span.pull-right  #{contact.dc_access_role}
+                            span.pull-right  #{app.locals.checkDef(contact.dc_access_role)}
 
         .col-md-4
           .panel.panel-default
             .panel-heading Account Information
             .panel-body
               p Client ID:
-                span.pull-right #{clientid}
+                span.pull-right #{app.locals.checkDef(clientid)}
               p Company:
-                span.label.label-success.pull-right #{client.company}
+                span.label.label-success.pull-right #{app.locals.checkDef(client.company)}
               p Address:
-                span.pull-right #{client.address}
+                span.pull-right #{app.locals.checkDef(client.address)}
               p Created:
-                span.pull-right #{getFormattedTimestamp(client.created)}
+                span.pull-right #{app.locals.checkDef(getFormattedTimestamp(client.created))}
               p Contact Information:
                 ul.list-group
                   li.list-group-item Name:
-                    span.pull-right #{client.first} #{client.last}
+                    span.pull-right #{app.locals.checkDef(client.first)} #{app.locals.checkDef(client.last)}
                   li.list-group-item Email:
-                    span.pull-right  #{client.email}
+                    span.pull-right  #{app.locals.checkDef(client.email)}
                   li.list-group-item Phone:
-                    span.pull-right  #{client.phone}
+                    span.pull-right  #{app.locals.checkDef(client.phone)}
 
 block footer
   script(src='/javascripts/jquery.dataTables.min.js')
@@ -103,7 +103,7 @@ block footer
       $('#table_tickets').dataTable( {
         "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
         "sPaginationType": "bootstrap",
-        "sAjaxSource": '/ubersmith/tickets/list/clientid/#{clientid}',
+        "sAjaxSource": '/ubersmith/tickets/list/clientid/#{app.locals.checkDef(clientid)}',
         "iDisplayLength": 10,
         "bSortClasses": false,
         "aoColumns": [

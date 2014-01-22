@@ -12,15 +12,15 @@ block content
       .col-xs-6.col-md-4
         .panel.panel-default
           if user.displayname
-            .panel-heading #{user.displayname}
+            .panel-heading #{app.locals.checkDef(app.locals.checkDef(user.displayname))}
           else
-            .panel-heading #{user.username}
+            .panel-heading #{app.locals.checkDef(app.locals.checkDef(user.username))}
           .panel-body
-            p Provider: #{user.provider}
-            p ID: #{user.id}
+            p Provider: #{app.locals.checkDef(app.locals.checkDef(user.provider))}
+            p ID: #{app.locals.checkDef(app.locals.checkDef(user.id))}
             if user.displayname
-              p Display Name: #{user.displayname}
-            p User Name: #{user.username}
+              p Display Name: #{app.locals.checkDef(app.locals.checkDef(user.displayname))}
+            p User Name: #{app.locals.checkDef(app.locals.checkDef(user.username))}
         if user.photos
           .panel.panel-default
             .panel-heading Photos
@@ -28,14 +28,14 @@ block content
               ul.list-inline
                 for photo in user.photos
                   li
-                    img(src="#{photo.value}").img-thumbnail
+                    img(src="#{app.locals.checkDef(app.locals.checkDef(photo.value))}").img-thumbnail
       .col-xs-6.col-md-4
         .panel.panel-default
-          .panel-heading Primary Email: #{user.email}
+          .panel-heading Primary Email: #{app.locals.checkDef(app.locals.checkDef(user.email))}
           .panel-body
             ul
               for email in user.emails
-                li #{email.value} (#{email.type})
+                li #{app.locals.checkDef(app.locals.checkDef(email.value))} (#{app.locals.checkDef(app.locals.checkDef(email.type))})
               else
                 li No additional Addresses
         .panel.panel-default

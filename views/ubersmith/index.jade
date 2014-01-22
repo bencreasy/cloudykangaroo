@@ -27,13 +27,13 @@ block content
               .col-xs-7.col-md-5
                 h4 Ticket Status
                 p Low
-                  span.label.label-primary.pull-right #{ticket_count.low}
+                  span.label.label-primary.pull-right #{app.locals.checkDef(ticket_count.low)}
                 p Normal
-                  span.label.label-success.pull-right #{ticket_count.normal}
+                  span.label.label-success.pull-right #{app.locals.checkDef(ticket_count.normal)}
                 p High
-                  span.label.label-warning.pull-right #{ticket_count.high}
+                  span.label.label-warning.pull-right #{app.locals.checkDef(ticket_count.high)}
                 p Urgent
-                  span.label.label-danger.pull-right #{ticket_count.urgent}
+                  span.label.label-danger.pull-right #{app.locals.checkDef(ticket_count.urgent)}
               .col-xs-7.col-md-5
                 h4 Order Status
                 p New Orders

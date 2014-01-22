@@ -22,9 +22,9 @@ block content
                 each event,id in event_list
                   if event.client_viewable == 1
                     tr
-                      td #{getFormattedTimestamp(event.time)}
-                      td #{event.user}
-                      td #{event.action}
+                      td #{app.locals.checkDef(getFormattedTimestamp(event.time))}
+                      td #{app.locals.checkDef(event.user)}
+                      td #{app.locals.checkDef(event.action)}
       .col-xs-6.col-md-4
         .panel.panel-default
           .panel-heading Company Status
@@ -33,13 +33,13 @@ block content
               .col-xs-7.col-md-5
                 h4 Ticket Status
                 p Low
-                  span.label.label-primary.pull-right #{ticket_count.low}
+                  span.label.label-primary.pull-right #{app.locals.checkDef(ticket_count.low)}
                 p Normal
-                  span.label.label-success.pull-right #{ticket_count.normal}
+                  span.label.label-success.pull-right #{app.locals.checkDef(ticket_count.normal)}
                 p High
-                  span.label.label-warning.pull-right #{ticket_count.high}
+                  span.label.label-warning.pull-right #{app.locals.checkDef(ticket_count.high)}
                 p Urgent
-                  span.label.label-danger.pull-right #{ticket_count.urgent}
+                  span.label.label-danger.pull-right #{app.locals.checkDef(ticket_count.urgent)}
               .col-xs-7.col-md-5
                 h4 Order Status
                 p New Orders

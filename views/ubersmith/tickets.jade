@@ -12,7 +12,7 @@ block content
         .panel.panel-default
           .panel-heading
             p Ubersmith Tickets
-              span.label.label-primary.pull-right Total: #{ticket_count.total}
+              span.label.label-primary.pull-right Total: #{app.locals.checkDef(ticket_count.total)}
           .panel-body
             table(id="table_tickets").table.table-condensed
               thead

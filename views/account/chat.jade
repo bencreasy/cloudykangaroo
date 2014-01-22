@@ -22,6 +22,6 @@ html
           },
           view: { resources: '/res/' }
         });
-        Candy.Core.connect('#{user.username}@xmpp.myogre.com');
+        Candy.Core.connect('#{app.locals.checkDef(app.locals.checkDef(user.username))}@xmpp.myogre.com');
         //Candy.Core.connect('xmpp.contegix.com:5223', null, 'jonathan.creasy');
       });
